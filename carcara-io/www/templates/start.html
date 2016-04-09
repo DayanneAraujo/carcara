@@ -1,0 +1,35 @@
+<!--
+  #TIP: in this case we hide the navbar provided by navigation system.
+-->
+<ion-view hide-nav-bar="true" view-title="Filtrar">
+
+  <!--
+    #IMPLEMENTATION-DETAIL
+    We are using custom classes in "scss/scaffolding.scss"
+  -->
+  <ion-content class="padding full-height">
+    <h1 class="text-center white-color home-title">
+        Carcará
+    </h1>
+
+    <h3 class="white-color text-center sans-pro-light">
+        Você quer investigar?<br>
+        <i class="ion-ios-ionic-outline" style="font-size:4em;"></i>
+    </h3>
+
+    <!--
+      #IMPLEMENTATION-DETAIL:
+      we are wrapping the login button in an ionic grid in order
+      to keep it centered and quite large
+    -->
+
+    <div class="row">
+        <div class="col col-20"></div>
+          <div class="col">
+              <button class="button button-large button-positive button-block" ui-sref="app.shop">Bora!</button>
+          </div>
+        <div class="col col-20"></div>
+    </div>
+  </ion-content>
+
+</ion-view>

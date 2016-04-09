@@ -1,0 +1,54 @@
+<!--
+  #TIP: in this case we hide the navbar provided by navigation system.
+-->
+<ion-view view-title="Resultados" enable-menu-with-back-views="true">
+  <ion-header-bar class="bar bar-deepblue bar-deepblue-borderbottom">
+  <h2 class="title">Password recover</h2>
+  </ion-header-bar>
+
+  <ion-content class="has-header has-footer padding full-height text-center">
+    <div style="padding-top:50px;">
+      <h3 class="sans-pro-light">Quer mais informações sobre o dinheiro público?</h3>
+      <h5 class="sans-pro-light">Responderemos para seu e-mail.</h5>
+      <h5 class="sans-pro-light">Quer detalhes sobre uma obra que está parada?</h5>
+      <h5 class="sans-pro-light">Quer esclarecimentos sobre os gastos?</h5>
+      <h5 class="sans-pro-light">Pode perguntar :)</h5>
+
+      <label class="item item-input">
+        <input type="text" placeholder="Digite aqui o email para contato">
+      </label>
+
+      <label class="item item-input">
+        <input type="text" placeholder="Digite aqui o tema/título do seu questionamento">
+      </label>
+      <ion-item>
+        <ion-label></ion-label>
+        <ion-textarea placeholder="detalhe aqui">
+          <label class="item item-input text">
+            <textarea placeholder="{{item.type }} Description*" rows="3" ng-model="item.description" ng-Required="true" name="description"></textarea>
+          </label>
+        </ion-textarea>
+      </ion-item>
+      <ion-item >
+        <label class="item item-input">Upload de imagem ou arquivo pequenos.</label>
+        <input type="file"></input>
+      </ion-item>
+
+      <!--
+       #NOT-IMPLEMENTED:
+       the button does nothing, implementation is up to you!
+      -->
+      <button class="button button-block button-energized">ENVIAR</button>
+
+    </div>
+  </ion-content>
+
+  <!--
+    #IMPLEMENTATION-DETAIL:
+    we put a link to login in the footer.
+  -->
+  <ion-footer-bar class="bar bar-deepblue bar-deepblue-bordertop pointer" ui-sref="app.login">
+    <h1 class="title sans-pro-light">Back to login</h1>
+  </ion-footer-bar>
+
+</ion-view>
