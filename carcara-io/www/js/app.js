@@ -1,182 +1,145 @@
-/*
+// Ionic Starter App
 
-  DeepBlue Starter Kit - version 1.1
-  Copyright (c) 2015 INMAGIK SRL - www.inmagik.com
-  All rights reserved
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+// 'starter.controllers' is found in controllers.js
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput'])
 
-  written by Mauro Bianchi
-  bianchimro@gmail.com
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        }
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
+        }
+    });
+})
 
-  file: app.js
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-*/
-
-angular.module('deepBlue', ['ionic', 'deepBlue.controllers', 'deepBlue.services'])
-
-.run(function($ionicPlatform, $rootScope, $timeout, $state) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
+    // Turn off caching for demo simplicity's sake
+    $ionicConfigProvider.views.maxCache(0);
 
     /*
-      #SIMPLIFIED-IMPLEMENTATION:
-      Example access control.
-      A real app would probably call a service method to check if there
-      is a logged user.
-
-      #IMPLEMENTATION-DETAIL: views that require authorizations have an
-      "auth" key with value = "true".
+    // Turn off back button text
+    $ionicConfigProvider.backButton.previousTitleText(false);
     */
-    $rootScope.$on('$stateChangeStart',
-      function(event, toState, toParams, fromState, fromParams){
-        if(toState.data && toState.data.auth == true && !$rootScope.user.email){
-          event.preventDefault();
-          $state.go('app.login');
+
+    $stateProvider.state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/menu.html',
+        controller: 'AppCtrl'
+    })
+
+    .state('app.activity', {
+        url: '/activity',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/activity.html',
+                controller: 'ActivityCtrl'
+            },
+            'fabContent': {
+                template: '<button id="fab-activity" ui-sref="app.activity-ibge" class="button button-fab button-fab-top-right expanded button-energized-900 flap"><i class="icon ion-paper-airplane"></i></button>',
+                controller: function ($timeout) {
+                    $timeout(function () {
+                        document.getElementById('fab-activity').classList.toggle('on');
+                    }, 200);
+                }
+            }
+        }
+    })
+
+    .state('app.activity-ibge', {
+        url: '/activity-ibge',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/activity-ibge.html',
+                controller: 'ProfileCtrl'
+            },
+            'fabContent': {
+                template: '<button id="fab-activity" class="button button-fab button-fab-top-right expanded button-energized-900 flap"><i class="icon ion-paper-airplane"></i></button>',
+                controller: function ($timeout) {
+                    $timeout(function () {
+                        document.getElementById('fab-activity').classList.toggle('on');
+                    }, 200);
+                }
+            }
+        }
+    })
+
+    .state('app.friends', {
+        url: '/friends',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/friends.html',
+                controller: 'FriendsCtrl'
+            },
+            'fabContent': {
+                template: '<button id="fab-friends" class="button button-fab button-fab-top-left expanded button-energized-900 spin"><i class="icon ion-chatbubbles"></i></button>',
+                controller: function ($timeout) {
+                    $timeout(function () {
+                        document.getElementById('fab-friends').classList.toggle('on');
+                    }, 900);
+                }
+            }
+        }
+    })
+
+    .state('app.gallery', {
+        url: '/gallery',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/gallery.html',
+                controller: 'GalleryCtrl'
+            },
+            'fabContent': {
+                template: '<button id="fab-gallery" class="button button-fab button-fab-top-right expanded button-energized-900 drop"><i class="icon ion-heart"></i></button>',
+                controller: function ($timeout) {
+                    $timeout(function () {
+                        document.getElementById('fab-gallery').classList.toggle('on');
+                    }, 600);
+                }
+            }
+        }
+    })
+
+    .state('app.login', {
+        url: '/login',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
+            },
+            'fabContent': {
+                template: ''
+            }
+        }
+    })
+
+    .state('app.profile', {
+        url: '/profile',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/profile.html',
+                controller: 'ProfileCtrl'
+            },
+            'fabContent': {
+                template: '<button id="fab-profile" class="button button-fab button-fab-bottom-right button-energized-900"><i class="icon ion-plus"></i></button>',
+                controller: function ($timeout) {
+                    /*$timeout(function () {
+                        document.getElementById('fab-profile').classList.toggle('on');
+                    }, 800);*/
+                }
+            }
         }
     });
 
-  });
-})
-
-.config(function($stateProvider, $urlRouterProvider) {
-
-  /*
-
-    Here we setup the views of our app.
-    In this case:
-    - feed, account, shop, checkout, cart will require login
-    - app will go to the "start view" when launched.
-
-    #IMPLEMENTATION-DETAIL: views that require authorizations have an
-    "auth" key with value = "true".
-
-  */
-
-  $stateProvider
-
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
-
-  .state('app.start', {
-    url: '/start',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/start.html'
-      }
-    }
-  })
-
-  .state('app.login', {
-    url: '/login',
-    cached : false,
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/login.html',
-        controller : 'LoginCtrl'
-      }
-    }
-  })
-
-  .state('app.forgot', {
-    url: '/forgot',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/forgot.html'
-      }
-    }
-  })
-
-  .state('app.signup', {
-    url: '/signup',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/signup.html'
-      }
-    }
-  })
-
-  .state('app.account', {
-      url: '/account',
-      data : { auth : false },
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/account.html',
-          controller : 'AccountCtrl'
-        }
-      }
-  })
-
-  .state('app.feed', {
-    url: '/feed',
-    data : { auth : false },
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/feed.html',
-        controller : 'FeedsCtrl'
-      }
-    }
-  })
-
-  .state('app.shop', {
-    url: '/shop',
-    data : { auth : false },
-    cache : false,
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/shop.html',
-        controller : 'ShopCtrl'
-      }
-    }
-  })
-
-  .state('app.cart', {
-    url: '/cart',
-    data : { auth : false },
-    cache : false,
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/cart.html',
-        controller : 'CartCtrl'
-      }
-    }
-  })
-
-  .state('app.lists', {
-    url: '/lists',
-    data : { auth : false },
-    cache : false,
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/lists.html'
-      }
-    }
-  })
-
-  .state('app.checkout', {
-    url: '/checkout',
-    data : { auth : false },
-    cache : false,
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/checkout.html',
-        controller : 'CheckoutCtrl'
-      }
-    }
-  })
-
-  // If none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/start');
-
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/app/login');
 });
