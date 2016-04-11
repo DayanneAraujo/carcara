@@ -1,72 +1,43 @@
 <ion-view view-title="Gallery">
-    <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
-        <div class="list half">
-            <div ui-sref="app.profile" class="card card-gallery item item-text-wrap">
-                <div class="ink dark-bg">
-                    <h2>Where's Elsa?</h2>
-                    <img class="full-image" src="img/sansa-snowcastle3.jpg">
-                </div>
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item stable-bg assertive">
-                        <i class="icon ion-heart"></i>
-                        4
-                    </a>
-                    <a class="tab-item stable-bg positive-900">
-                        <i class="icon ion-chatbubbles"></i>
-                        2
-                    </a>
-                </div>
-            </div>
-            <div ui-sref="app.profile" class="card card-gallery item item-text-wrap">
-                <div class="ink dark-bg">
-                    <h2>Hmm. Hope nobody destroys this!</h2>
-                    <img class="full-image" src="img/sansa-snowcastle.png">
-                </div>
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item stable-bg assertive">
-                        <i class="icon ion-heart"></i>
-                        6
-                    </a>
-                    <a class="tab-item stable-bg positive-900">
-                        <i class="icon ion-chatbubbles"></i>
-                        1
-                    </a>
+  <ion-content ng-class="{expanded:isExpanded}">
+    <h3 style="magin: 30px">Titulo convenio</h3>
+    <div class="item card-item">
+        <div ui-sref="app.profile" class="card stable-bg ink ink-dark">
+            <div class="item item-avatar item-text-wrap">
+                <span class="avatar" style="background-image: url('img/tyrion.jpg');"></span>
+                <strong>Tyrion Lannister</strong> says "Perhaps that is the secret. It is not what we do, so much as why we do it."
+                <div class="card-footer text-right">
+                  <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                  <div class="pull-left">
+                      <i class="icon ion-ios-information positive"></i> <span style="color: #4CAF50">Aprovada</span>
+                  </div>
                 </div>
             </div>
         </div>
-        <div class="list half">
-            <div ui-sref="app.profile" class="card card-gallery item item-text-wrap">
-                <div class="ink dark-bg">
-                    <h2>Making Olaf a House</h2>
-                    <img class="full-image" src="img/sansa-snowcastle2.jpg">
-                </div>
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item stable-bg assertive">
-                        <i class="icon ion-heart"></i>
-                        22
-                    </a>
-                    <a class="tab-item stable-bg positive-900">
-                        <i class="icon ion-chatbubbles"></i>
-                        9
-                    </a>
-                </div>
-            </div>
-            <div ui-sref="app.profile" class="card card-gallery item item-text-wrap">
-                <div class="ink dark-bg">
-                    <h2>ohai!</h2>
-                    <img class="full-image" src="img/sansa-snowcastle4.jpg">
-                </div>
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item stable-bg assertive">
-                        <i class="icon ion-heart"></i>
-                        8
-                    </a>
-                    <a class="tab-item stable-bg positive-900">
-                        <i class="icon ion-chatbubbles"></i>
-                        0
-                    </a>
-                </div>
-            </div>
-        </div>
-    </ion-content>
+    </div>
+    <div class="has-header has-footer padding full-height text-center" style="margin-bottom: 15px">
+      <label class="item item-input item-select">
+          <div class="input-label">
+              Quem sou eu?
+          </div>
+          <select ng-Required="true">
+              <option>Selecione o seu papel</option>
+              <option>Médico</option>
+              <option>Enfermeiro</option>
+              <option>Técnico</option>
+              <option>Paciente</option>
+              <option>Cidadão</option>
+              <option>Outros</option>
+          </select>
+        </label>
+        <ion-textarea placeholder="detalhe aqui">
+          <label class="item item-input text">
+            <textarea placeholder="Comente e detalhe sua denúncia." rows="3" ng-Required="true" name="description"></textarea>
+          </label>
+        </ion-textarea>
+      </div>
+
+      <button class="button button-block button-energized"> Enviar denúncia</button>
+
+  </ion-content>
 </ion-view>
