@@ -6,7 +6,6 @@ h1 {
     font-size: 42px;
 }
 
-
 /* Utilities
 ==================================*/
 .title-bordered {
@@ -22,7 +21,6 @@ p {
 .scroll {
     height: 100%;
 }
-
 
 /* Menu
 ==================================*/
@@ -64,13 +62,14 @@ p {
 /* Login
 ==================================*/
 .app-icon {
-    background-color: #fff;
-    background: url('../img/crown.jpg') center;
+    background-color: #B71C1C;
+    background: url('../img/saude_cidada.png') center;
     background-size: cover;
     border-radius: 50%;
     height: 125px;
     margin: 0 auto;
     width: 125px;
+    margin-top: 50px;
 }
 
 .social-login {
