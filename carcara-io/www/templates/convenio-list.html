@@ -1,0 +1,124 @@
+<ion-view view-title="Lista de convênios">
+    <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
+      <h4 class="content padding"> <strong> Convênios em Recife </strong> </h4>
+        <ion-content scroll="false">
+          <tab-slide-box tab="0">
+                <div class="tsb-icons">
+                    <div class="tsb-ic-wrp">
+                        <ion-scroll direction="x" class="tsb-hscroll">
+                        <a href="javascript:;" >2015</a>
+                        <a href="javascript:;" >2014</a>
+                        <a href="javascript:;" >2013</a>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <ion-slide-box show-pager="false"
+                        on-slide-changed="slideHasChanged($index)">
+                    <ion-slide>
+                        <ion-scroll style="height:100%" delegate-handle="slide1Scroll" >
+                            <div class="item card-item">
+                                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                                    <div class="item item-avatar item-text-wrap">
+                                        <span class="avatar" style="background-image: url('img/obras.jpg');"></span>
+                                        <strong>AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES. </strong>
+                                        <p style="padding-top: 10px">INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP</p>
+                                        <div class="card-footer text-right">
+                                            <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                                            <div class="pull-left">
+                                                <i class="icon ion-android-alert negative"></i> <span style="color: #B71C1C">Rejeitada</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item card-item">
+                                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                                    <div class="item item-avatar item-text-wrap">
+                                        <span class="avatar" style="background-image: url('img/bens.jpg');"></span>
+                                        <strong>Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde</strong>
+                                        <p style="padding-top: 10px">INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP</p>
+                                        <div class="card-footer text-right">
+                                          <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                                          <div class="pull-left">
+                                              <i class="icon ion-ios-information positive"></i> <span style="color: #4CAF50">Aprovada</span>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-scroll>
+                    </ion-slide>
+                    <ion-slide>
+                        <ion-scroll style="height:100%" delegate-handle="slide1Scroll" >
+                            <div class="item card-item">
+                                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                                    <div class="item item-avatar item-text-wrap">
+                                        <span class="avatar" style="background-image: url('img/obras.jpg');"></span>
+                                        <strong>AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES. </strong>
+                                        <p style="padding-top: 10px">INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP</p>
+                                        <div class="card-footer text-right">
+                                            <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                                            <div class="pull-left">
+                                                <i class="icon ion-android-alert negative"></i> <span style="color: #B71C1C">Rejeitada</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item card-item">
+                                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                                    <div class="item item-avatar item-text-wrap">
+                                        <span class="avatar" style="background-image: url('img/bens.jpg');"></span>
+                                        <strong>Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde</strong>
+                                        <p style="padding-top: 10px">INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP</p>
+                                        <div class="card-footer text-right">
+                                          <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                                          <div class="pull-left">
+                                              <i class="icon ion-ios-information positive"></i> <span style="color: #4CAF50">Aprovada</span>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-scroll>
+                    </ion-slide>
+                    <ion-slide>
+                        <ion-scroll style="height:100%" delegate-handle="slide1Scroll" >
+                            <div class="item card-item">
+                                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                                    <div class="item item-avatar item-text-wrap">
+                                        <span class="avatar" style="background-image: url('img/obras.jpg');"></span>
+                                        <strong>AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES. </strong>
+                                        <p style="padding-top: 10px">INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP</p>
+                                        <div class="card-footer text-right">
+                                            <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                                            <div class="pull-left">
+                                                <i class="icon ion-android-alert negative"></i> <span style="color: #B71C1C">Rejeitada</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item card-item">
+                                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                                    <div class="item item-avatar item-text-wrap">
+                                        <span class="avatar" style="background-image: url('img/bens.jpg');"></span>
+                                        <strong>Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde</strong>
+                                        <p style="padding-top: 10px">INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP</p>
+                                        <div class="card-footer text-right">
+                                          <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                                          <div class="pull-left">
+                                              <i class="icon ion-ios-information positive"></i> <span style="color: #4CAF50">Aprovada</span>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-scroll>
+                    </ion-slide>
+                </ion-slide-box>
+            </tab-slide-box>
+        </ion-content>
+
+    </ion-content>
+</ion-view>
