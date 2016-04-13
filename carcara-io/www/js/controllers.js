@@ -244,4 +244,17 @@ angular.module('starter.controllers', [])
     ionicMaterialInk.displayEffect();
 })
 
+.controller('ConveniosCtr', function($scope) {
+    
+    $scope.convenios = [
+    { codigo: 1, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" },
+    { codigo: 2, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
+    { codigo: 3, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
+    { codigo: 4, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" }
+    
+  ];
+    
+})
+
+
 ;
