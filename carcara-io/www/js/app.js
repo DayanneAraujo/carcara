@@ -59,7 +59,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         views: {
             'menuContent': {
                 templateUrl: 'templates/activity-ibge.html',
-                controller: 'ProfileCtrl'
+                controller: 'ConvenioExtraDetailCtrl'
             },
             'fabContent': {
             template: ''
