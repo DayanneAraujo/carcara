@@ -46,7 +46,10 @@ class QualificacaoProponente(models.Model):
 class Proponente(models.Model):
     codigo = models.CharField(max_length=20)
     nome = models.CharField(max_length=100)
-    identificacao = models.CharField(max_length=100, )
+    identificacao = models.CharField(max_length=100,
+                                     help_text=_(u"Identificação do proponente"))
+    tipo_identificacao = models.CharField(max_length=20,
+                                     help_text=_(u"Tipo de identificação do proponente"))
     nome_responsavel = models.CharField(
                             max_length=100,
                             help_text=_(u"Nome do responsável pelo proponente"))
@@ -87,7 +90,6 @@ class SituacaoPublicacaoConvenio(models.Model):
                             help_text=_(u"Situação da publicação do convênio"))
 
 
-
 class ModalidadeConvenio(models.Model):
     nome = models.CharField(max_length=25,
                             help_text=_(u"Modalidade do convênio"))
@@ -101,14 +103,12 @@ class Convenio(models.Model):
     numero_interno = models.CharField(max_length=20,
                                        help_text=_(u"Situação da aplicação de recursos."))
     modalidade = models.ForeignKey(ModalidadeConvenio)
-    municipio_convenente = models.ForeignKey(Municipio,
-                                             blank=False, null=False)
     concedente = models.ForeignKey(Concedente, blank=False, null=False)
-    objeto_convenio = models.TextField(max_length=1000,
-                                       help_text=_(u"Objeto do Convênio"))
-    justificativa_convenio = models.TextField(
-                                        max_length=1000,
-                                        help_text=_(u"Justificativa do Convênio"))
+    proponente = models.ForeignKey(Proponente, blank=False, null=False)
+    objeto = models.TextField(max_length=1000,
+                              help_text=_(u"Objeto do Convênio"))
+    justificativa = models.TextField(max_length=1000,
+                                     help_text=_(u"Justificativa do Convênio"))
     valor_global = models.DecimalField(max_digits=10,
                                        decimal_places=2,
                                        help_text=_(u"Valor global do convênio"))
@@ -127,10 +127,10 @@ class Convenio(models.Model):
                                             max_digits=10,
                                             decimal_places=2,
                                             help_text=_(u"Valor da contrapartida em bens e serviços do convenente"))
-    situacao_convenio = models.ForeignKey(SituacaoConvenio,
-                                        blank=False,
-                                        null=False,
-                                        help_text=_(u"Status do convênio."))
+    situacao = models.ForeignKey(SituacaoConvenio,
+                                 blank=False,
+                                 null=False,
+                                 help_text=_(u"Status do convênio."))
     data_publicacao = models.DateField(
                                 help_text=_(u"Data de publicação do convênio"))
     data_assinatura = models.DateField(
@@ -148,18 +148,18 @@ class Convenio(models.Model):
 
 
 class TipoDespesa(models.Model):
-    nome_tipo_despesa = models.CharField(max_length=25,
+    nome = models.CharField(max_length=25,
                                          help_text=_(u"Tipo da despesa"))
 
 
 class PlanoAplicacao(models.Model):
     convenio = models.ForeignKey(Convenio, blank=False, null=False)
     tipo_despesa = models.ForeignKey(TipoDespesa, blank=False, null=False)
-    situacao_aplicacao = models.ForeignKey(SituacaoAplicacao,
+    situacao = models.ForeignKey(SituacaoAplicacao,
                                            blank=False, null=False)
     municipio_aplicador = models.ForeignKey(Municipio,
                                             blank=False, null=False)
-    natureza_aplicacao = models.CharField(max_length=100,
+    natureza = models.CharField(max_length=100,
                                           help_text=_(u"Natureza da aplicação"))
 
 
