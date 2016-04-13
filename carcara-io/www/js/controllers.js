@@ -122,6 +122,18 @@ angular.module('starter.controllers', [])
     $scope.$parent.setExpanded(false);
     $scope.$parent.setHeaderFab(false);
 
+    $scope.showToast = function(message, duration, location) {
+        window.plugins.toast.showWithOptions(
+          {
+            message: "Agora você acompanha este convênio.",
+            duration: "short", // which is 2000 ms. "long" is 4000. Or specify the nr of ms yourself.
+            position: "bottom",
+            addPixelsY: -40  // added a negative value to move it up a bit (default 0)
+          });
+        window.localStorage['convenio'] = true;
+        $scope.acompanha = "Acompanhando";
+    };
+
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
