@@ -18,6 +18,12 @@
             <a ui-sref="app.despesas-convenio-list" class="tab-item">
                 <i class="icon ion-social-usd"></i> Despesas
             </a>
+              <a class="tab-item" ng-click="showToast('testing the bottom', 'long', 'bottom')">
+                  <i class="icon ion-pin"></i> Acompanhar
+              </a>
+        </div>
+        <div>
+          <span class="val">{{acompanha}}</span>
         </div>
         <div class="content padding">
           <table cellspacing="50">
