@@ -492,7 +492,10 @@ angular.module('starter.controllers', [])
     { ano: 2015, cidade:"Recife", codigo: 2, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
     { ano: 2015, cidade:"Recife", codigo: 3, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
     { ano: 2015, cidade:"Recife", codigo: 4, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" },
-    { ano: 2014, cidade:"Recife", codigo: 5, title: "JAM JAM",  instituicao: "LOLAPALUZA" ,status: "Rejeitada" }
+    { ano: 2014, cidade:"Recife", codigo: 4, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" },
+    { ano: 2014, cidade:"Recife", codigo: 4, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "Hospital da Restauração" ,status: "Rejeitada" },
+    { ano: 2013, cidade:"Recife", codigo: 3, title: "Aquisição de medicamentos e material permanente para unidade de atenção especializada em saúde",  instituicao: "Hospital Getúlio Vargas" ,status: "Aprovada" }
+
 
   ];
 
