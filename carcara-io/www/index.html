@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <title></title>
     <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -20,7 +21,11 @@
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <link href="css/tabSlideBox.css" rel="stylesheet"/>
     <script src="js/tabSlideBox.js"></script>
-    <script src="cordova.js"></script>
+    <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyAUA-IV-tkQYDoxILDcaC7Mz8EtJUHkMjc'></script>
+    <script src="lib/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src='lib/angular-google-maps/dist/angular-google-maps.min.js'></script>
+    <script src='lib/lodash/dist/lodash.min.js'></script>
+    <!--<script src="cordova.js"></script>-->
 
 </head>
 <body ng-app="starter">
