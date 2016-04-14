@@ -131,8 +131,6 @@ angular.module('starter.controllers', [])
             addPixelsY: -40  // added a negative value to move it up a bit (default 0)
           });
         window.localStorage['convenio'] = true;
-        $scope.acompanha = "Acompanhando";
-        $scope.acompanha_convenio = true;
     };
 
     // Set Motion
@@ -288,23 +286,16 @@ angular.module('starter.controllers', [])
     ionicMaterialInk.displayEffect();
 })
 
-.controller('ConveniosCtr', function($scope) {
+.controller('ConveniosCtrl', function($scope) {
 
     $scope.convenios = [
-    { codigo: 1, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" },
-    { codigo: 2, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
-    { codigo: 3, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
-    { codigo: 4, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" }
+    { ano: 2015, cidade:"Recife", codigo: 1, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" },
+    { ano: 2015, cidade:"Recife", codigo: 2, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
+    { ano: 2015, cidade:"Recife", codigo: 3, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
+    { ano: 2015, cidade:"Recife", codigo: 4, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" },
+    { ano: 2014, cidade:"Recife", codigo: 5, title: "JAM JAM",  instituicao: "LOLAPALUZA" ,status: "Rejeitada" }
 
   ];
-
-})
-
-.controller('tabsController', function($scope, $ionicSideMenuDelegate) {
-
-  $scope.showRightMenu = function() {
-    $ionicSideMenuDelegate.toggleRight();
-  };
 
 })
 

@@ -45,12 +45,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                 controller: 'ConvenioListCtrl'
             },
             'fabContent': {
-                template: '<button id="fab-convenio-list" ui-sref="app.convenio-extra-detail" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
+                template: '<button id="fab-convenio-list" ui-sref="app.convenio-search-list" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
                 controller: function ($timeout) {
                     $timeout(function () {
                         document.getElementById('fab-convenio-list').classList.toggle('on');
                     }, 200);
                 }
+            }
+        }
+    })
+
+    .state('app.convenio-search-list', {
+        url: '/convenio-search-list',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/convenio-search-list.html',
+                controller: 'ConveniosCtrl'
+            },
+            'fabContent': {
+                template: ''
             }
         }
     })
@@ -63,7 +76,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                 controller: 'ConvenioSalvoListCtrl'
             },
             'fabContent': {
-                template: '<button id="fab-convenio-list" ui-sref="app.convenio-extra-detail" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
+                template: '<button id="fab-convenio-list" ui-sref="app.convenio-search-list" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
                 controller: function ($timeout) {
                     $timeout(function () {
                         document.getElementById('fab-convenio-list').classList.toggle('on');
@@ -73,11 +86,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         }
     })
 
-    .state('app.activity-ibge', {
-        url: '/activity-ibge',
+    .state('app.info-ibge', {
+        url: '/info-ibge',
         views: {
             'menuContent': {
-                templateUrl: 'templates/activity-ibge.html',
+                templateUrl: 'templates/info-ibge.html',
                 controller: 'ConvenioExtraDetailCtrl'
             },
             'fabContent': {
@@ -94,7 +107,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                 controller: 'DenunciaConvenioCtrl'
             },
             'fabContent': {
-                template: '<button id="fab-convenio-list" ui-sref="app.convenio-extra-detail" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
+                template: '<button id="fab-convenio-list" ui-sref="app.convenio-search-list" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
                 controller: function ($timeout) {
                     $timeout(function () {
                         document.getElementById('fab-convenio-list').classList.toggle('on');
@@ -112,7 +125,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                 controller: 'ConvenioExtraDetailCtrl'
             },
             'fabContent': {
-                template: '<button id="fab-convenio-list" ui-sref="app.convenio-extra-detail" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
+                template: '<button id="fab-convenio-list" ui-sref="app.convenio-search-list" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
                 controller: function ($timeout) {
                     $timeout(function () {
                         document.getElementById('fab-convenio-list').classList.toggle('on');
@@ -130,7 +143,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                 controller: 'DespesasConvenioListCtrl'
             },
             'fabContent': {
-                template: '<button id="fab-convenio-list" ui-sref="app.convenio-extra-detail" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
+                template: '<button id="fab-convenio-list" ui-sref="app.convenio-search-list" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
                 controller: function ($timeout) {
                     $timeout(function () {
                         document.getElementById('fab-convenio-list').classList.toggle('on');
@@ -161,7 +174,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                 controller: 'ConvenioDetailCtrl'
             },
             'fabContent': {
-                template: '<button id="fab-convenio-list" ui-sref="app.convenio-extra-detail" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
+                template: '<button id="fab-convenio-list" ui-sref="app.convenio-search-list" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
                 controller: function ($timeout) {
                     $timeout(function () {
                         document.getElementById('fab-convenio-list').classList.toggle('on');
@@ -171,15 +184,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         }
     })
 
-    .state('app.tabs', {
-        url: "/tabs",
-        views: {
-          'menuContent': {
-            templateUrl: "tabs.html",
-            controller: 'tabsController'
-          }
-        }
-    })
+    // .state('app.tabs', {
+    //     url: "/tabs",
+    //     views: {
+    //       'menuContent': {
+    //         templateUrl: "tabs.html",
+    //         controller: 'tabsController'
+    //       }
+    //     }
+    // })
 
     .state('app.despesas-convenio-detail', {
         url: '/despesas-convenio-detail',
@@ -189,7 +202,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                 controller: 'DespesaConvenioDetailCtrl'
             },
             'fabContent': {
-                template: '<button id="fab-convenio-list" ui-sref="app.convenio-extra-detail" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
+                template: '<button id="fab-convenio-list" ui-sref="app.convenio-search-list" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
                 controller: function ($timeout) {
                     $timeout(function () {
                         document.getElementById('fab-convenio-list').classList.toggle('on');

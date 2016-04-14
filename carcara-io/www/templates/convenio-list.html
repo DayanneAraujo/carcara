@@ -18,9 +18,9 @@
                     <ion-slide style="background-color: #B71C1C">
                         <ion-scroll style="height:100%" direction="y" delegate-handle="slide1Scroll" >
 
-                           <div ng-controller="ConveniosCtr">
+                           <div ng-controller="ConveniosCtrl">
 
-                            <div class="item card-item" ng-repeat="x in convenios | filter:test | orderBy:'instituicao'">
+                            <div class="item card-item" ng-repeat="x in convenios | filter:{'ano':2015} | orderBy:'instituicao'">
                                 <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
                                     <div class="item item-avatar item-text-wrap">
                                         <span class="avatar" style="background-image: url('img/obras.jpg');"></span>
@@ -40,6 +40,59 @@
 
                         </ion-scroll>
                     </ion-slide>
+                    <ion-slide style="background-color: #B71C1C">
+                        <ion-scroll style="height:100%" direction="y" delegate-handle="slide1Scroll" >
+
+                           <div ng-controller="ConveniosCtrl">
+
+                            <div class="item card-item" ng-repeat="x in convenios | filter:{'ano':2014} | orderBy:'instituicao'">
+                                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                                    <div class="item item-avatar item-text-wrap">
+                                        <span class="avatar" style="background-image: url('img/obras.jpg');"></span>
+                                        <strong>{{x.title}}</strong>
+                                        <p style="padding-top: 10px">{{x.instituicao}}</p>
+                                        <div class="card-footer text-right">
+                                            <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                                            <div class="pull-left">
+                                                <i class="icon ion-android-alert negative"></i> <span style="color: #B71C1C">{{x.status}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           </div>
+
+                        </ion-scroll>
+                    </ion-slide>
+
+
+                    <ion-slide style="background-color: #B71C1C">
+                        <ion-scroll style="height:100%" direction="y" delegate-handle="slide1Scroll" >
+
+                           <div ng-controller="ConveniosCtrl">
+
+                            <div class="item card-item" ng-repeat="x in convenios | filter:{'ano':2013} | orderBy:'instituicao'">
+                                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                                    <div class="item item-avatar item-text-wrap">
+                                        <span class="avatar" style="background-image: url('img/obras.jpg');"></span>
+                                        <strong>{{x.title}}</strong>
+                                        <p style="padding-top: 10px">{{x.instituicao}}</p>
+                                        <div class="card-footer text-right">
+                                            <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                                            <div class="pull-left">
+                                                <i class="icon ion-android-alert negative"></i> <span style="color: #B71C1C">{{x.status}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           </div>
+
+                        </ion-scroll>
+                    </ion-slide>
+
                 </ion-slide-box>
             </tab-slide-box>
         </ion-content>
