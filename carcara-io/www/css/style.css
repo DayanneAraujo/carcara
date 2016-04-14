@@ -76,3 +76,7 @@ p {
     position: fixed;
     bottom: 0;
 }
+
+.angular-google-map-container {
+  height: 100%;
+}

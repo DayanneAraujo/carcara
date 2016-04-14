@@ -95,6 +95,28 @@ angular.module('starter.controllers', [])
     ionicMaterialInk.displayEffect();
 })
 
+.controller('MapCtrl', function($scope) {
+    var map;
+    document.addEventListener("deviceready", function() {
+        var div = document.getElementById("map_canvas");
+
+        // Initialize the map view
+        map = plugin.google.maps.Map.getMap(div);
+
+        // Wait until the map is ready status.
+        map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+    }, false);
+
+    $scope.onMapReady = function() {
+        var button = document.getElementById("button");
+        button.addEventListener("click", onBtnClicked, false);
+    };
+
+    $scope.onBtnClicked = function() {
+        map.showDialog();
+    };
+})
+
 .controller('FriendsCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
     // Set Header
     $scope.$parent.showHeader();
