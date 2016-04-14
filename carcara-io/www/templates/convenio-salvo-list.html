@@ -1,0 +1,29 @@
+<ion-view view-title="Convênios salvos">
+     <ion-nav-buttons side="left">
+        <button class="button" ui-sref="app.convenio-list" style="background-color: Transparent; border: none"><i class="ion-arrow-left-c" style="background-color: Transparent; color: white"></i></button>
+    </ion-nav-buttons>
+    <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
+      <h4 class="content padding"> Meus convênios salvos </h4>
+        <div ng-show="checkSavedConvenio()">
+            <div class="item card-item">
+                <div ui-sref="app.convenio-detail" class="card stable-bg ink ink-dark">
+                    <div class="item item-avatar item-text-wrap">
+                        <span class="avatar" style="background-image: url('img/obras.jpg');"></span>
+                        <strong>AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES. </strong> Equipamentos :02 Mesas Cirurgicas - Ambientes = Centro Cirúrgico,06 Balanças Eletronicas - Ambientes = UTI's e Enfermarias,100 Escadinha de Dois Degraus - Ambientes = UTI's e Enfermarias,09 Colchão
+                        <div class="card-footer text-right">
+                            <i class="icon ion-plus-circled assertive"></i> 23 denuncias
+                            <div class="pull-left">
+                                <i class="icon ion-android-alert negative"></i> <span style="color: #B71C1C">Rejeitada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="!checkSavedConvenio()">
+            <dir>
+                <span>Não há convênios salvos.</span>
+            </dir>
+        </div>
+    </ion-content>
+</ion-view>

@@ -54,6 +54,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             }
         }
     })
+
+    .state('app.convenio-salvo-list', {
+        url: '/convenio-salvo-list',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/convenio-salvo-list.html',
+                controller: 'ConvenioSalvoListCtrl'
+            },
+            'fabContent': {
+                template: '<button id="fab-convenio-list" ui-sref="app.convenio-extra-detail" class="button button-fab button-fab-top-right expanded button-energized-900 "><i class="icon ion-ios-search-strong"></i></button>',
+                controller: function ($timeout) {
+                    $timeout(function () {
+                        document.getElementById('fab-convenio-list').classList.toggle('on');
+                    }, 200);
+                }
+            }
+        }
+    })
+
     .state('app.activity-ibge', {
         url: '/activity-ibge',
         views: {
@@ -149,6 +168,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                     }, 200);
                 }
             }
+        }
+    })
+
+    .state('app.tabs', {
+        url: "/tabs",
+        views: {
+          'menuContent': {
+            templateUrl: "tabs.html",
+            controller: 'tabsController'
+          }
         }
     })
 

@@ -132,6 +132,7 @@ angular.module('starter.controllers', [])
           });
         window.localStorage['convenio'] = true;
         $scope.acompanha = "Acompanhando";
+        $scope.acompanha_convenio = true;
     };
 
     // Set Motion
@@ -158,6 +159,37 @@ angular.module('starter.controllers', [])
     $scope.isExpanded = true;
     // $scope.$parent.setExpanded(true);
     $scope.$parent.setHeaderFab('right');
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideIn({
+            selector: '.animate-fade-slide-in .item'
+        });
+    }, 200);
+
+    // Activate ink for controller
+    ionicMaterialInk.displayEffect();
+})
+
+.controller('ConvenioSalvoListCtrl', function($scope, $rootScope, $stateParams,
+                                              $timeout, ionicMaterialMotion,
+                                              ionicMaterialInk) {
+    $scope.$parent.showHeader();
+    $scope.$parent.clearFabs();
+    $scope.isExpanded = true;
+    // $scope.$parent.setExpanded(true);
+    $scope.$parent.setHeaderFab('right');
+
+    $scope.checkSavedConvenio = function(){
+        if (window.localStorage['convenio']) {
+            return true;
+        }
+        return false;
+    };
+
+    $scope.goBackHome = function(){
+        $
+        window.location.href = "/convenio-list";
+    };
 
     $timeout(function() {
         ionicMaterialMotion.fadeSlideIn({
@@ -257,16 +289,23 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ConveniosCtr', function($scope) {
-    
+
     $scope.convenios = [
     { codigo: 1, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" },
     { codigo: 2, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
     { codigo: 3, title: "Aquisição de equipamento e material permanente para unidade de atenção especializada em saúde",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Aprovada" },
     { codigo: 4, title: "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANENTES.",  instituicao: "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP" ,status: "Rejeitada" }
-    
+
   ];
-    
+
 })
 
+.controller('tabsController', function($scope, $ionicSideMenuDelegate) {
+
+  $scope.showRightMenu = function() {
+    $ionicSideMenuDelegate.toggleRight();
+  };
+
+})
 
 ;
