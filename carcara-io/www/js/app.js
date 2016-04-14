@@ -50,6 +50,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         }
     })
 
+    .state('app.unidades-saude', {
+        url: '/unidades-saude',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/unidades-saude-map.html',
+                controller: 'UnidadesSaudeCtrl'
+            },
+            'fabContent': {
+            template: ''
+          }
+        }
+    })
+
     .state('app.convenio-list', {
         url: '/convenio-list',
         views: {

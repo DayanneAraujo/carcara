@@ -3,7 +3,7 @@
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout) {
+.controller('AppCtrl', function($scope, $http, $rootScope, $ionicModal, $ionicPopover, $timeout) {
     // Form data for the login modal
     $scope.loginData = {};
     $scope.isExpanded = false;
@@ -85,6 +85,31 @@ angular.module('starter.controllers', [])
             fabs[0].remove();
         }
     };
+
+    $rootScope.loadGLoader =function(){
+        if(!window.google||!window.google.loader){
+            console.log("loading gloader");
+            $http.get("http://www.google.com/jsapi")
+                .success(function(json){
+                    var scriptElem = document.createElement('script');
+                    document.getElementsByTagName('head')[0].appendChild(scriptElem);
+                    scriptElem.text = json;
+                    locations.loadGMaps();
+            });
+        }else{
+            if(!window.google.maps||!window.google.maps){
+                console.log("no gmaps");
+                $rootScope.loadGMaps();
+            }
+        }
+    };
+
+    $rootScope.loadGMaps = function(){
+        if(window.google&&window.google.loader&&window.google.maps===undefined){
+            console.log("loading gmaps");
+            try{google.load("maps", "3.21", {callback: mappingCallback, other_params: "libraries=geometry&sensor=true&language=en"});}catch(e){}
+        }
+    };
 })
 
 .controller('LoginCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk) {
@@ -96,25 +121,142 @@ angular.module('starter.controllers', [])
 })
 
 .controller('MapCtrl', function($scope) {
-    var map;
-    document.addEventListener("deviceready", function() {
-        var div = document.getElementById("map_canvas");
+        $scope.title = "Map Page";
+        var loadMap = function(){
+            var mapOptions = {
+                center: new google.maps.LatLng(-8.063236, -34.870948),
+                streetViewControl: false,
+                styles: [{featureType: "all",stylers: [{ saturation: -75 }]}],
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControlOptions: {position:google.maps.ControlPosition.TOP_CENTER},
+                zoom: 12,
+                zoomControl: true,
+                zoomControlOptions: {position:google.maps.ControlPosition.RIGHT_BOTTOM,style:google.maps.ZoomControlStyle.SMALL}
+            };
+            $scope.map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+        };
 
-        // Initialize the map view
-        map = plugin.google.maps.Map.getMap(div);
+        $scope.$on('$ionicView.loaded',function(){
+            console.log("map page loaded - should only see me once???");
+        })
 
-        // Wait until the map is ready status.
-        map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
-    }, false);
+        $scope.$on('$ionicView.enter',function(){
+            console.log("Is google, google maps and our map set up?")
+            if(window.google){
+                console.log("google is");
+                if(window.google.maps){
+                    console.log("maps is");
+                    if($scope.map===undefined){
+                        console.log("loading our map now...");
+                        loadMap();
+                    }/*else{
+                        goo
+                    }*/
+                    }else{
+                        console.log("maps isn't...");
+                        $scope.loadGMaps(); //then load the map
+                    }
+                }else{
+                    console.log("google isn't...");
+                    $scope.loadGLoader(); //then load maps, then load the map
+                }
+        });
+})
 
-    $scope.onMapReady = function() {
-        var button = document.getElementById("button");
-        button.addEventListener("click", onBtnClicked, false);
-    };
+.controller('UnidadesSaudeCtrl', function($scope) {
+    // -8.12159    -34.9162
+    // -8.0265 -34.95617
+    // -8.05345    -34.90814
 
-    $scope.onBtnClicked = function() {
-        map.showDialog();
-    };
+
+        var loadMap = function(){
+            var mapOptions = {
+                center: new google.maps.LatLng(-8.063236, -34.870948),
+                streetViewControl: false,
+                styles: [{featureType: "all",stylers: [{ saturation: -75 }]}],
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControlOptions: {position:google.maps.ControlPosition.TOP_CENTER},
+                zoom: 12,
+                zoomControl: true,
+                zoomControlOptions: {position:google.maps.ControlPosition.RIGHT_BOTTOM,style:google.maps.ZoomControlStyle.SMALL}
+            };
+            $scope.map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+            var un1 = new google.maps.Marker({
+                position: new google.maps.LatLng(-8.12159, -34.9162),
+                //map: $scope.map,
+                title: 'US 173 PSF DANCING DAYS'
+            });
+
+            var infowindow1 = new google.maps.InfoWindow({
+                content: 'US 173 PSF DANCING DAYS'
+            });
+
+            un1.addListener('click', function() {
+                infowindow1.open($scope.map, un1);
+            });
+
+            var un2 = new google.maps.Marker({
+                position: new google.maps.LatLng(-8.0265, -34.95617),
+                //map: $scope.map,
+                title: 'US 248 PSF BARREIRAS'
+            });
+
+            var infowindow2 = new google.maps.InfoWindow({
+                content: 'US 248 PSF BARREIRAS'
+            });
+
+            un2.addListener('click', function() {
+                infowindow2.open($scope.map, un2);
+            });
+
+            var un3 = new google.maps.Marker({
+                position: new google.maps.LatLng(-8.05345, -34.90814),
+                //map: $scope.map,
+                title: 'SANLIFE'
+            });
+
+            var infowindow3 = new google.maps.InfoWindow({
+                content: 'SANLIFE'
+            });
+
+            un3.addListener('click', function() {
+                infowindow3.open($scope.map, un3);
+            });
+
+            un1.setMap($scope.map);
+            un2.setMap($scope.map);
+            un3.setMap($scope.map);
+
+            var markers = [un1, un2, un3];//some array
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i].getPosition());
+            }
+
+            $scope.map.fitBounds(bounds);
+        };
+
+        $scope.$on('$ionicView.enter',function(){
+            console.log("Is google, google maps and our map set up?")
+            if(window.google){
+                console.log("google is");
+                if(window.google.maps){
+                    console.log("maps is");
+                    if($scope.map===undefined){
+                        console.log("loading our map now...");
+                        loadMap();
+                    }/*else{
+                        goo
+                    }*/
+                    }else{
+                        console.log("maps isn't...");
+                        $scope.loadGMaps(); //then load the map
+                    }
+                }else{
+                    console.log("google isn't...");
+                    $scope.loadGLoader(); //then load maps, then load the map
+                }
+        });
 })
 
 .controller('FriendsCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
@@ -188,6 +330,41 @@ angular.module('starter.controllers', [])
 
     // Activate ink for controller
     ionicMaterialInk.displayEffect();
+
+    var loadMap = function(){
+        var mapOptions = {
+            center: new google.maps.LatLng(-8.063236, -34.870948), // posicao de Recife
+            streetViewControl: false,
+            styles: [{featureType: "all",stylers: [{ saturation: -75 }]}],
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControlOptions: {position:google.maps.ControlPosition.TOP_CENTER},
+            zoom: 12,
+            zoomControl: true,
+            zoomControlOptions: {position:google.maps.ControlPosition.RIGHT_BOTTOM,style:google.maps.ZoomControlStyle.SMALL}
+        };
+        $scope.map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+    };
+    $scope.$on('$ionicView.enter',function(){
+        console.log("Is google, google maps and our map set up?")
+        if(window.google){
+            console.log("google is");
+            if(window.google.maps){
+                console.log("maps is");
+                if($scope.map===undefined){
+                    console.log("loading our map now...");
+                    loadMap();
+                }/*else{
+                    goo
+                }*/
+                }else{
+                    console.log("maps isn't...");
+                    $scope.loadGMaps(); //then load the map
+                }
+            }else{
+                console.log("google isn't...");
+                $scope.loadGLoader(); //then load maps, then load the map
+            }
+    });
 })
 
 .controller('ConvenioSalvoListCtrl', function($scope, $rootScope, $stateParams,
